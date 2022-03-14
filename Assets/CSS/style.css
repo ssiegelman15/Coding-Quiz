@@ -16,3 +16,12 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+p {
+  font-size: 20px;
+}
+
+.button {
+  background-color: blueviolet;
+  color: white;
+}
