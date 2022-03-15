@@ -2,7 +2,7 @@ var headerBar = document.querySelector("#header");
 var timeLeft = document.querySelector(".timeLeft");
 var startButton = document.querySelector(".startButton");
 var rightHeader = document.querySelector(".rightHeader");
-var highScores = document.querySelector("#highScores");
+var highScores = document.querySelector("#highscores");
 var opener = document.querySelector(".opener");
 var quizSequence = document.querySelector(".quizSequence");
 var questionText = document.querySelector(".questionText");
@@ -62,3 +62,4 @@ function showHighscores() {
 startButton.addEventListener("click", startGame);
 submitScore.addEventListener("click", showHighscores);
 goBack.addEventListener("click", init)
+highScores.addEventListener("click",showHighscores)
