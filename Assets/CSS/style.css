@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  padding-bottom: 20px;
 }
 
 header {
@@ -7,11 +8,12 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
 }
 
 #highscores {
   text-decoration: none;
+  outline: none;
 }
 
 .mainDisplay {
@@ -19,6 +21,11 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 28px;
 }
 
 p {
@@ -28,7 +35,7 @@ p {
 .startButton {
   background-color: blueviolet;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   border-radius: 5px;
 }
 

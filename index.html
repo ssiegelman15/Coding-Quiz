@@ -36,9 +36,23 @@
 
     <!-- End of game sequence where user enters initials -->
     <div class="enterInitials hidden mainDisplay">
-
+      <h1> Quiz Complete!</h1>
+      <p> Your final score is <span class = "finalScore"></span>.</p>
+      <form>
+        <h2 id = "initialForm">Enter your initials to save your score:</h2>
+        <input type = "text" name="name" id="initials">
+        <button class = "submitScore">Submit</button>
+      </form>
     </div>
 
+    <!-- Highscores page -->
+    <div class="highscores hidden mainDisplay">
+      <h1>Highscores</h1>
+      <div class="highscoreButtons">
+        <button class = "goBack">Go Back</button>
+        <button class = "clearHighscores">Clear Highscores</button>
+      </div>
+    </div>
 
   </main>
   <script src="./Assets/js/script.js"></script>
