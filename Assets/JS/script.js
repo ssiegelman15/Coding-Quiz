@@ -1,3 +1,4 @@
+var headerBar = document.querySelector(".header");
 var timeLeft = document.querySelector(".timeLeft");
 var startButton = document.querySelector(".startButton");
 var highScores = document.querySelector("#highScores");
@@ -12,14 +13,13 @@ var highscorePage = document.querySelector(".highscorePage");
 var goBack = document.querySelector(".goBack");
 var clearHighscores = document.querySelector(".clearHighscores");
 
-var isOver = false;
 var timer;
 var timerElement;
 
 function startGame() {
   opener.classList.add("hidden");
   quizSequence.classList.remove("hidden");
-  timerElement = 10;
+  timerElement = 3;
   startTimer()
 }
 
@@ -41,5 +41,13 @@ function endGame() {
   enterInitials.classList.remove("hidden");
 }
 
+function showHighscores() {
+  highscorePage.classList.remove("hidden");
+  opener.classList.add("hidden");
+  quizSequence.classList.add("hidden");
+  enterInitials.classList.add("hidden");
+  headerBar.classList.add("hidden");
+}
 
 startButton.addEventListener("click", startGame);
+submitScore.addEventListener("click", showHighscores);

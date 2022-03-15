@@ -17,6 +17,11 @@ header {
   color: blue;
 }
 
+#initials {
+  text-align: center;
+  text-justify: center;
+}
+
 .mainDisplay {
   display: flex;
   flex-direction: column;
@@ -42,7 +47,7 @@ button {
   width: 120px;
 }
 
-.startButton:hover {
+button:hover {
   cursor: pointer;
 }
 

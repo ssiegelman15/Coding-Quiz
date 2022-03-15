@@ -10,7 +10,7 @@
 </head>
 <body>
   <!-- Header with Highscore link and timer -->
-  <header>
+  <header class = "header">
     <a href = "#highscores" id = "highscores">View Highscores</a>
     <div class = "rightHeader">Time: <span class = "timeLeft">75</span></div>
   </header>
@@ -41,7 +41,7 @@
       <p> Your final score is <span id = "finalScore"></span>.</p>
       <form>
         <h2 id = "initialForm">Enter your initials to save your score:</h2>
-        <input type = "text" name="name" id="initials">
+        <input type = "text" maxlength = "3" name="name" id="initials">
         <button class = "submitScore">Submit</button>
       </form>
     </div>
