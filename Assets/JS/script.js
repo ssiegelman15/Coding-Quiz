@@ -13,7 +13,8 @@ var goBack = document.querySelector(".goBack");
 var clearHighscores = document.querySelector(".clearHighscores");
 
 function startGame() {
-
+  opener.classList.add("hidden");
+  quizSequence.classList.remove("hidden");
 }
 
 
