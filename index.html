@@ -26,10 +26,11 @@
     
     <!-- Quiz sequence -->
     <div class = "quizSequence hidden mainDisplay">
-      <div class = 'questionText'>
+      <div class = "questionText">
         <!-- Placeholder for question text -->
+        <h1>PLACEHOLDER - TBD</h1>
       </div>
-      <div class = options>
+      <div class = "options">
         <!-- Placeholder for answer options -->
       </div>
     </div>
@@ -37,7 +38,7 @@
     <!-- End of game sequence where user enters initials -->
     <div class="enterInitials hidden mainDisplay">
       <h1> Quiz Complete!</h1>
-      <p> Your final score is <span class = "finalScore"></span>.</p>
+      <p> Your final score is <span id = "finalScore"></span>.</p>
       <form>
         <h2 id = "initialForm">Enter your initials to save your score:</h2>
         <input type = "text" name="name" id="initials">
@@ -46,7 +47,7 @@
     </div>
 
     <!-- Highscores page -->
-    <div class="highscores hidden mainDisplay">
+    <div class="highscorePage hidden mainDisplay">
       <h1>Highscores</h1>
       <div class="highscoreButtons">
         <button class = "goBack">Go Back</button>
