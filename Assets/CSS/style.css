@@ -25,4 +25,21 @@ p {
   background-color: blueviolet;
   color: white;
   font-size: 20px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display:none;
+}
+
+.correct {
+  background-color: greenyellow;
+}
+
+.incorrect {
+  background-color: red;
 }
