@@ -3,7 +3,7 @@
   padding-bottom: 20px;
 }
 
-#header {
+header {
   font-size: 20px;
   display: flex;
   flex-direction: row;
@@ -51,12 +51,19 @@ button:hover {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
+.initialArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.flex {
-  display: flex;
+#initialForm {
+  padding-right: 15px;
+}
+
+.hidden {
+  display: none;
 }
 
 .correct {
