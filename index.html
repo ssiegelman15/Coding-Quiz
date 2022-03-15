@@ -10,7 +10,7 @@
 </head>
 <body>
   <!-- Header with Highscore link and timer -->
-  <header class = "header">
+  <header id = "header">
     <a href = "#highscores" id = "highscores">View Highscores</a>
     <div class = "rightHeader">Time: <span class = "timeLeft">75</span></div>
   </header>
@@ -39,11 +39,11 @@
     <div class="enterInitials hidden mainDisplay">
       <h1> Quiz Complete!</h1>
       <p> Your final score is <span id = "finalScore"></span>.</p>
-      <form>
+      <div class = "initialArea">
         <h2 id = "initialForm">Enter your initials to save your score:</h2>
         <input type = "text" maxlength = "3" name="name" id="initials">
-        <button class = "submitScore">Submit</button>
-      </form>
+      </div>
+        <button id = "submitScore">Submit</button>
     </div>
 
     <!-- Highscores page -->
