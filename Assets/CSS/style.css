@@ -10,7 +10,7 @@ header {
   padding: 10px;
 }
 
-main {
+.mainDisplay {
   display: flex;
   flex-direction: column;
   justify-content: center;
