@@ -3,11 +3,15 @@
 }
 
 header {
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+}
+
+#highscores {
+  text-decoration: none;
 }
 
 .mainDisplay {
@@ -21,14 +25,14 @@ p {
   font-size: 20px;
 }
 
-.button {
+.startButton {
   background-color: blueviolet;
   color: white;
   font-size: 20px;
   border-radius: 5px;
 }
 
-.button:hover {
+.startButton:hover {
   cursor: pointer;
 }
 
