@@ -25,6 +25,7 @@ var isCorrect;
 var score = 0;
 var qIndex = 0;
 
+// Questions and answers variable
 var questions = [
   {
     question: "What does HTML stand for?",
@@ -43,13 +44,14 @@ var questions = [
   },
 ]
 
+// Function to run when user clicks "start quiz" button
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
-  timerElement = 75;
-  // add for loop to insert question and answer choices into HTML UL
-  startTimer()
+  timerElement = 10;
   addQuestion()
+  startTimer()
+  
 }
 
 function addQuestion() {
@@ -84,24 +86,32 @@ function checkAnswer() {
       score++;
       rootEl.classList.add("correct");
       if (qIndex < questions.length){
+        resetQuiz()
         qIndex++;
+        addQuestion()
       } else {
+        resetQuiz()
         qIndex = 0;
+        addQuestion()
       }
-      console.log(qIndex);
-      resetQuiz()
-      addQuestion()
+      // console.log(qIndex);
+      // resetQuiz()
+      // addQuestion()
     } else {
       isCorrect = false;
       rootEl.classList.add("incorrect");
       if (qIndex < (questions.length)-1){
+        resetQuiz()
         qIndex++;
+        addQuestion()
       } else {
+        resetQuiz()
         qIndex = 0;
+        addQuestion()
       }
-      console.log(qIndex);
-      resetQuiz()
-      addQuestion()
+      // console.log(qIndex);
+      // resetQuiz()
+      // addQuestion()
     }
   }
   // resetQuiz()
@@ -136,6 +146,8 @@ function endGame() {
 }
 
 function init() {
+  qIndex = 0;
+  resetQuiz()
   headerBar.style.display = "flex"
   opener.style.display = "flex";
   highscorePage.style.display = "none";
