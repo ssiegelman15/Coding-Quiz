@@ -49,6 +49,15 @@ function startGame() {
   addQuestion()
 }
 
+function resetQuiz() {
+  while (choiceList.firstChild) {
+      choiceList.removeChild(choiceList.firstChild);
+  }
+  while (questionText.firstChild) {
+    questionText.removeChild(questionText.firstChild);
+  }
+}
+
 function addQuestion() {
   var currentQ = questions[qIndex];
   qText.textContent = questions[qIndex].question;
@@ -61,6 +70,7 @@ function addQuestion() {
     choiceButton.setAttribute("value", choiceValue);
     choiceButton.textContent = currentQ.choices[i];
     choiceList.appendChild(choiceButton);
+    choiceButton.addEventListener("click", resetQuiz);
 
     // choiceButton.addEventListener("click", checkAnswer);
   }
