@@ -17,10 +17,30 @@ var clearHighscores = document.querySelector(".clearHighscores");
 var timer;
 var timerElement;
 
+var questions = [
+  {
+    question: "What does HTML stand for?",
+    choice1: "HyperText Markup Language",
+    choice2: "History Told Me Lies",
+    choice3: "How To Make Latkes",
+    choice4: "Have Too Many Landmines",
+    answer: 1
+  },
+  {
+    question: "How awesome is this coding bootcamp?",
+    choice1: "Not great...",
+    choice2: "This is the worst",
+    choice3: "Biggest waste of money",
+    choice4: "I'm learning so much!",
+    answer: 4
+  }
+]
+
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
   timerElement = 3;
+  // add for loop to insert question and answer choices into HTML UL
   startTimer()
 }
 
