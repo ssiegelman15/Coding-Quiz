@@ -43,7 +43,7 @@ var questions = [
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
-  timerElement = 3;
+  timerElement = 75;
   // add for loop to insert question and answer choices into HTML UL
   startTimer()
   addQuestion()

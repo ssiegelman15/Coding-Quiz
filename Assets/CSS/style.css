@@ -49,12 +49,15 @@ button {
 
 .choiceButton {
   display: block;
+  /* flex-direction: column; */
   background-color: blueviolet;
   color: white;
   font-size: 22px;
   border-radius: 5px;
   height: 30px;
-  width: 250px;
+  width: 450px;
+  text-justify: center;
+  margin-top: 8px;
 }
 
 button:hover {
