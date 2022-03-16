@@ -83,13 +83,29 @@ function checkAnswer() {
       isCorrect = true;
       score++;
       rootEl.classList.add("correct");
+      if (qIndex < questions.length){
+        qIndex++;
+      } else {
+        qIndex = 0;
+      }
+      console.log(qIndex);
+      resetQuiz()
+      addQuestion()
     } else {
       isCorrect = false;
       rootEl.classList.add("incorrect");
+      if (qIndex < (questions.length)-1){
+        qIndex++;
+      } else {
+        qIndex = 0;
+      }
+      console.log(qIndex);
+      resetQuiz()
+      addQuestion()
     }
   }
-  resetQuiz()
-  addQuestion()
+  // resetQuiz()
+  // addQuestion()
 }
 
 function resetQuiz() {
