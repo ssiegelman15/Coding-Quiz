@@ -1,3 +1,4 @@
+var rootEl = document.querySelector(".rootEl");
 var headerBar = document.querySelector("#header");
 var timeLeft = document.querySelector(".timeLeft");
 var startButton = document.querySelector(".startButton");
@@ -52,7 +53,10 @@ function startGame() {
 }
 
 function addQuestion() {
+  rootEl.classList.remove("correct", "incorrect")
   currentQ = questions[qIndex];
+  let qText = document.createElement("h1");
+  questionText.appendChild(qText);
   qText.textContent = questions[qIndex].question;
 
   for (let i = 0; i <= 3; i++) {
@@ -77,13 +81,15 @@ function checkAnswer() {
     console.log(answerText);
     if (choice === answerText) {
       isCorrect = true;
-      console.log(isCorrect);
+      score++;
+      rootEl.classList.add("correct");
     } else {
       isCorrect = false;
-      console.log(isCorrect);
+      rootEl.classList.add("incorrect");
     }
   }
   resetQuiz()
+  addQuestion()
 }
 
 function resetQuiz() {
