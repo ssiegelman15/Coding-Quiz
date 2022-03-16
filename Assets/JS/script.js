@@ -19,20 +19,25 @@ var timerElement;
 
 var questions = [
   {
+    numb: 1,
     question: "What does HTML stand for?",
-    choice1: "HyperText Markup Language",
-    choice2: "History Told Me Lies",
-    choice3: "How To Make Latkes",
-    choice4: "Have Too Many Landmines",
-    answer: 1
+    choices: [
+    "HyperText Markup Language",
+    "History Told Me Lies",
+    "How To Make Latkes",
+    "Have Too Many Landmines",
+    ],
+    answer: "HyperText Markup Language"
   },
   {
     question: "How awesome is this coding bootcamp?",
-    choice1: "Not great...",
-    choice2: "This is the worst",
-    choice3: "Biggest waste of money",
-    choice4: "I'm learning so much!",
-    answer: 4
+    choices: [
+    "Not great...",
+    "This is the worst",
+    "Biggest waste of money",
+    "I'm learning so much!",
+    ],
+    answer:  "I'm learning so much!"
   }
 ]
 
