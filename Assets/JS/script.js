@@ -19,6 +19,8 @@ var initials = document.querySelector("#initials");
 
 var timer;
 var timerElement;
+var currentQ;
+var isCorrect;
 var score = 0;
 var qIndex = 0;
 
@@ -50,7 +52,7 @@ function startGame() {
 }
 
 function addQuestion() {
-  var currentQ = questions[qIndex];
+  currentQ = questions[qIndex];
   qText.textContent = questions[qIndex].question;
 
   for (let i = 0; i <= 3; i++) {
@@ -67,9 +69,20 @@ function addQuestion() {
 }
 
 function checkAnswer() {
-
-
-
+  var choice;
+  answerText = currentQ.answer;
+  choiceList.onclick = function(event) {
+    choice = event.target.innerHTML;
+    console.log(choice);
+    console.log(answerText);
+    if (choice === answerText) {
+      isCorrect = true;
+      console.log(isCorrect);
+    } else {
+      isCorrect = false;
+      console.log(isCorrect);
+    }
+  }
   resetQuiz()
 }
 
