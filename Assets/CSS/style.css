@@ -47,6 +47,16 @@ button {
   width: 120px;
 }
 
+.choiceButton {
+  display: block;
+  background-color: blueviolet;
+  color: white;
+  font-size: 22px;
+  border-radius: 5px;
+  height: 30px;
+  width: 250px;
+}
+
 button:hover {
   cursor: pointer;
 }

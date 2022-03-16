@@ -6,39 +6,38 @@ var highScores = document.querySelector("#highscores");
 var opener = document.querySelector(".opener");
 var quizSequence = document.querySelector(".quizSequence");
 var questionText = document.querySelector(".questionText");
+var qText = document.querySelector(".qText");
 var options = document.querySelector(".options");
+var choiceList = document.querySelector(".choiceList");
 var enterInitials = document.querySelector(".enterInitials");
 var finalScore = document.querySelector("#finalScore");
 var submitScore = document.querySelector("#submitScore");
 var highscorePage = document.querySelector(".highscorePage");
 var goBack = document.querySelector(".goBack");
 var clearHighscores = document.querySelector(".clearHighscores");
+var initials = document.querySelector("#initials");
 
 var timer;
 var timerElement;
+var score = 0;
+var qIndex = 0;
 
 var questions = [
   {
-    numb: 1,
     question: "What does HTML stand for?",
-    choices: [
-    "HyperText Markup Language",
-    "History Told Me Lies",
-    "How To Make Latkes",
-    "Have Too Many Landmines",
-    ],
+    choices: ["HyperText Markup Language", "History Told Me Lies", "How To Make Latkes", "Have Too Many Landmines"],
     answer: "HyperText Markup Language"
   },
   {
     question: "How awesome is this coding bootcamp?",
-    choices: [
-    "Not great...",
-    "This is the worst",
-    "Biggest waste of money",
-    "I'm learning so much!",
-    ],
-    answer:  "I'm learning so much!"
-  }
+    choices: ["Not great...", "This is the worst", "Biggest waste of money", "I'm learning so much!"],
+    answer: "I'm learning so much!"
+  },
+  {
+    question: "What does CSS stand for?",
+    choices: ["Common Style Sheet", "Cascading Style Sheet", "Colorful Style Sheet", "Computer Style Sheet"],
+    answer: "Cascading Style Sheet"
+  },
 ]
 
 function startGame() {
@@ -47,6 +46,24 @@ function startGame() {
   timerElement = 3;
   // add for loop to insert question and answer choices into HTML UL
   startTimer()
+  addQuestion()
+}
+
+function addQuestion() {
+  var currentQ = questions[qIndex];
+  qText.textContent = questions[qIndex].question;
+
+  for (let i = 0; i <= 3; i++) {
+    let choiceButton = document.createElement("button");
+    let choiceValue = currentQ.choices[i];
+    choiceButton.classList.add("choiceButton");
+
+    choiceButton.setAttribute("value", choiceValue);
+    choiceButton.textContent = currentQ.choices[i];
+    choiceList.appendChild(choiceButton);
+
+    // choiceButton.addEventListener("click", checkAnswer);
+  }
 }
 
 function startTimer() {
@@ -77,6 +94,15 @@ function init() {
 }
 
 function showHighscores() {
+  // add logic for initials requirement, no initials pops up an alert, else submits form
+    highscorePage.style.display = "flex";
+    opener.style.display = "none";
+    quizSequence.style.display = "none";
+    enterInitials.style.display = "none";
+    headerBar.style.display = "none";
+}
+
+function showHighscores2() {
   highscorePage.style.display = "flex";
   opener.style.display = "none";
   quizSequence.style.display = "none";
@@ -86,5 +112,5 @@ function showHighscores() {
 
 startButton.addEventListener("click", startGame);
 submitScore.addEventListener("click", showHighscores);
-goBack.addEventListener("click", init)
-highScores.addEventListener("click",showHighscores)
+goBack.addEventListener("click", init);
+highScores.addEventListener("click", showHighscores2);
