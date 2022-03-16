@@ -1,3 +1,4 @@
+var rootEl = document.querySelector(".rootEl");
 var headerBar = document.querySelector("#header");
 var timeLeft = document.querySelector(".timeLeft");
 var startButton = document.querySelector(".startButton");
@@ -19,6 +20,8 @@ var initials = document.querySelector("#initials");
 
 var timer;
 var timerElement;
+var currentQ;
+var isCorrect;
 var score = 0;
 var qIndex = 0;
 
@@ -43,14 +46,17 @@ var questions = [
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
-  timerElement = 3;
+  timerElement = 75;
   // add for loop to insert question and answer choices into HTML UL
   startTimer()
   addQuestion()
 }
 
 function addQuestion() {
-  var currentQ = questions[qIndex];
+  rootEl.classList.remove("correct", "incorrect")
+  currentQ = questions[qIndex];
+  let qText = document.createElement("h1");
+  questionText.appendChild(qText);
   qText.textContent = questions[qIndex].question;
 
   for (let i = 0; i <= 3; i++) {
@@ -61,8 +67,53 @@ function addQuestion() {
     choiceButton.setAttribute("value", choiceValue);
     choiceButton.textContent = currentQ.choices[i];
     choiceList.appendChild(choiceButton);
+    choiceButton.addEventListener("click", checkAnswer);
 
-    // choiceButton.addEventListener("click", checkAnswer);
+  }
+}
+
+function checkAnswer() {
+  var choice;
+  answerText = currentQ.answer;
+  choiceList.onclick = function(event) {
+    choice = event.target.innerHTML;
+    console.log(choice);
+    console.log(answerText);
+    if (choice === answerText) {
+      isCorrect = true;
+      score++;
+      rootEl.classList.add("correct");
+      if (qIndex < questions.length){
+        qIndex++;
+      } else {
+        qIndex = 0;
+      }
+      console.log(qIndex);
+      resetQuiz()
+      addQuestion()
+    } else {
+      isCorrect = false;
+      rootEl.classList.add("incorrect");
+      if (qIndex < (questions.length)-1){
+        qIndex++;
+      } else {
+        qIndex = 0;
+      }
+      console.log(qIndex);
+      resetQuiz()
+      addQuestion()
+    }
+  }
+  // resetQuiz()
+  // addQuestion()
+}
+
+function resetQuiz() {
+  while (choiceList.firstChild) {
+      choiceList.removeChild(choiceList.firstChild);
+  }
+  while (questionText.firstChild) {
+    questionText.removeChild(questionText.firstChild);
   }
 }
 
