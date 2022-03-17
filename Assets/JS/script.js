@@ -54,11 +54,11 @@ function startGame() {
   timerElement = 10;
   addQuestion()
   startTimer()
-  
+
 }
 
 function addQuestion() {
-  rootEl.classList.remove("correct", "incorrect")
+  quizSequence.classList.remove("correct", "incorrect")
   currentQ = questions[qIndex];
   let qText = document.createElement("h1");
   questionText.appendChild(qText);
@@ -80,38 +80,43 @@ function addQuestion() {
 function checkAnswer() {
   var choice;
   answerText = currentQ.answer;
-  choiceList.onclick = function(event) {
+  choiceList.onclick = function (event) {
     choice = event.target.innerHTML;
     if (choice === answerText) {
       isCorrect = true;
       score++;
-      // rootEl.classList.add("correct");
-      if (qIndex < (questions.length)-1){
-        resetQuiz()
-        qIndex++;
-        addQuestion()
-      } else {
-        resetQuiz()
-        qIndex = 0;
-        clearInterval(timer);
-        endGame()
-      }
+      quizSequence.classList.add("correct");
+      setTimeout(function () {
+        if (qIndex < (questions.length) - 1) {
+          resetQuiz()
+          qIndex++;
+          addQuestion()
+        } else {
+          resetQuiz()
+          qIndex = 0;
+          clearInterval(timer);
+          endGame()
+        }
+      }, 2000)
       // console.log(qIndex);
       // resetQuiz()
       // addQuestion()
     } else {
       isCorrect = false;
-      // rootEl.classList.add("incorrect");
-      if (qIndex < (questions.length)-1){
-        resetQuiz()
-        qIndex++;
-        addQuestion()
-      } else {
-        resetQuiz()
-        qIndex = 0;
-        clearInterval(timer);
-        endGame()
-      }
+      timerElement -= 2;
+      quizSequence.classList.add("incorrect");
+      setTimeout(function () {
+        if (qIndex < (questions.length) - 1) {
+          resetQuiz()
+          qIndex++;
+          addQuestion()
+        } else {
+          resetQuiz()
+          qIndex = 0;
+          clearInterval(timer);
+          endGame()
+        }
+      }, 2000)
       // console.log(qIndex);
       // resetQuiz()
       // addQuestion()
@@ -123,7 +128,7 @@ function checkAnswer() {
 
 function resetQuiz() {
   while (choiceList.firstChild) {
-      choiceList.removeChild(choiceList.firstChild);
+    choiceList.removeChild(choiceList.firstChild);
   }
   while (questionText.firstChild) {
     questionText.removeChild(questionText.firstChild);
@@ -131,7 +136,7 @@ function resetQuiz() {
 }
 
 function startTimer() {
-  timer = setInterval(function() {
+  timer = setInterval(function () {
     timerElement--;
     timeLeft.textContent = timerElement;
     // Tests if time has run out
@@ -143,14 +148,14 @@ function startTimer() {
   }, 1000);
 }
 
-function endGame() { 
-  finalScore.textContent = score; 
+function endGame() {
+  finalScore.textContent = score;
   quizSequence.style.display = "none";
   enterInitials.style.display = "flex";
 }
 
 function init() {
-  allScores = [];
+  // allScores = [];
   score = 0;
   qIndex = 0;
   resetQuiz()
@@ -163,32 +168,35 @@ function init() {
 }
 
 function showHighscores() {
-  
+
   highscorePage.style.display = "flex";
   opener.style.display = "none";
   quizSequence.style.display = "none";
   enterInitials.style.display = "none";
   headerBar.style.display = "none";
   var userInitials = document.getElementById('initials').value.toUpperCase();
-  localStorage.setItem("Score", score);
-  localStorage.setItem("UserName", JSON.stringify(userInitials));
-  var scoreDisplay = localStorage.getItem("Score");
-  var initalDisplay = localStorage.getItem("UserName");
-  var finalInitials = JSON.parse(initalDisplay);
-  var scoreInitials = [finalInitials, scoreDisplay];
+  // localStorage.setItem("Score", score);
+  // localStoragesetItem("UserName", JSON.stringify(userInitials));
+  // var scoreDisplay = localStorage.getItem("Score");
+  // var initalDisplay = localStorage.getItem("UserName");
+  // var finalInitials = userInitials;
+  var scoreInitials = [userInitials, score];
+  var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
   allScores.push(scoreInitials);
-  console.log(allScores);
-  
+  localStorage.setItem("CodeQuiz", JSON.stringify(allScores));
+
   renderScores()
 
-  
+
   // add logic for initials requirement, no initials pops up an alert, else submits form
 
-  
+
 }
 
 function renderScores() {
+  var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
   // Render a new li for each todo
+  highscoreList.innerHTML = '';
   for (var i = 0; i < allScores.length; i++) {
     var scoreArray = allScores[i];
 
@@ -208,7 +216,13 @@ function showHighscores2() {
   renderScores()
 }
 
+function clearStorage() {
+  localStorage.clear();
+  highscoreList.innerHTML = '';
+}
+
 startButton.addEventListener("click", startGame);
 submitScore.addEventListener("click", showHighscores);
 goBack.addEventListener("click", init);
 highScores.addEventListener("click", showHighscores2);
+clearHighscores.addEventListener("click", clearStorage)
