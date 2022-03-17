@@ -98,9 +98,6 @@ function checkAnswer() {
           endGame()
         }
       }, 2000)
-      // console.log(qIndex);
-      // resetQuiz()
-      // addQuestion()
     } else {
       isCorrect = false;
       timerElement -= 2;
@@ -117,13 +114,8 @@ function checkAnswer() {
           endGame()
         }
       }, 2000)
-      // console.log(qIndex);
-      // resetQuiz()
-      // addQuestion()
     }
   }
-  // resetQuiz()
-  // addQuestion()
 }
 
 function resetQuiz() {
@@ -155,7 +147,6 @@ function endGame() {
 }
 
 function init() {
-  // allScores = [];
   score = 0;
   qIndex = 0;
   resetQuiz()
@@ -175,11 +166,6 @@ function showHighscores() {
   enterInitials.style.display = "none";
   headerBar.style.display = "none";
   var userInitials = document.getElementById('initials').value.toUpperCase();
-  // localStorage.setItem("Score", score);
-  // localStoragesetItem("UserName", JSON.stringify(userInitials));
-  // var scoreDisplay = localStorage.getItem("Score");
-  // var initalDisplay = localStorage.getItem("UserName");
-  // var finalInitials = userInitials;
   var scoreInitials = [userInitials, score];
   var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
   allScores.push(scoreInitials);
@@ -195,7 +181,6 @@ function showHighscores() {
 
 function renderScores() {
   var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
-  // Render a new li for each todo
   highscoreList.innerHTML = '';
   for (var i = 0; i < allScores.length; i++) {
     var scoreArray = allScores[i];
