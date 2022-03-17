@@ -17,6 +17,7 @@ var highscorePage = document.querySelector(".highscorePage");
 var goBack = document.querySelector(".goBack");
 var clearHighscores = document.querySelector(".clearHighscores");
 var initials = document.querySelector("#initials");
+var finalScore = document.querySelector("#finalScore");
 
 var timer;
 var timerElement;
@@ -142,12 +143,14 @@ function startTimer() {
   }, 1000);
 }
 
-function endGame() {  
+function endGame() { 
+  finalScore.textContent = score; 
   quizSequence.style.display = "none";
   enterInitials.style.display = "flex";
 }
 
 function init() {
+  score = 0;
   qIndex = 0;
   resetQuiz()
   headerBar.style.display = "flex"
