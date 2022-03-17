@@ -25,6 +25,7 @@ var currentQ;
 var isCorrect;
 var score = 0;
 var qIndex = 0;
+var allScores = [];
 
 // Questions and answers variable
 var questions = [
@@ -167,22 +168,40 @@ function showHighscores() {
   var initalDisplay = localStorage.getItem("UserName");
   var finalInitials = JSON.parse(initalDisplay);
   console.log(finalInitials)
+  var scoreInitials = [finalInitials, scoreDisplay];
+  allScores.push(scoreInitials);
   
+  // renderScores()
 
-  
-
-  
   
   // add logic for initials requirement, no initials pops up an alert, else submits form
-
-
-
 
     highscorePage.style.display = "flex";
     opener.style.display = "none";
     quizSequence.style.display = "none";
     enterInitials.style.display = "none";
     headerBar.style.display = "none";
+}
+
+function renderScores() {
+  // Clear todoList element and update todoCountSpan
+  todoList.innerHTML = "";
+  todoCountSpan.textContent = todos.length;
+
+  // Render a new li for each todo
+  for (var i = 0; i < todos.length; i++) {
+    var todo = todos[i];
+
+    var li = document.createElement("li");
+    li.textContent = todo;
+    li.setAttribute("data-index", i);
+
+    var button = document.createElement("button");
+    button.textContent = "Complete ✔️";
+
+    li.appendChild(button);
+    todoList.appendChild(li);
+  }
 }
 
 function showHighscores2() {
