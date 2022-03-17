@@ -51,7 +51,8 @@ var questions = [
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
-  timerElement = 10;
+  timerElement = (questions.length)*8;
+  timeLeft.textContent = timerElement;
   addQuestion()
   startTimer()
 
@@ -97,10 +98,10 @@ function checkAnswer() {
           clearInterval(timer);
           endGame()
         }
-      }, 2000)
+      }, 1000)
     } else {
       isCorrect = false;
-      timerElement -= 2;
+      timerElement -= 4;
       quizSequence.classList.add("incorrect");
       setTimeout(function () {
         if (qIndex < (questions.length) - 1) {
@@ -113,7 +114,7 @@ function checkAnswer() {
           clearInterval(timer);
           endGame()
         }
-      }, 2000)
+      }, 1000)
     }
   }
 }
