@@ -84,22 +84,7 @@ function checkAnswer() {
     if (choice === answerText) {
       isCorrect = true;
       score++;
-      rootEl.classList.add("correct");
-      if (qIndex < questions.length){
-        resetQuiz()
-        qIndex++;
-        addQuestion()
-      } else {
-        resetQuiz()
-        qIndex = 0;
-        addQuestion()
-      }
-      // console.log(qIndex);
-      // resetQuiz()
-      // addQuestion()
-    } else {
-      isCorrect = false;
-      rootEl.classList.add("incorrect");
+      // rootEl.classList.add("correct");
       if (qIndex < (questions.length)-1){
         resetQuiz()
         qIndex++;
@@ -107,7 +92,24 @@ function checkAnswer() {
       } else {
         resetQuiz()
         qIndex = 0;
+        clearInterval(timer);
+        endGame()
+      }
+      // console.log(qIndex);
+      // resetQuiz()
+      // addQuestion()
+    } else {
+      isCorrect = false;
+      // rootEl.classList.add("incorrect");
+      if (qIndex < (questions.length)-1){
+        resetQuiz()
+        qIndex++;
         addQuestion()
+      } else {
+        resetQuiz()
+        qIndex = 0;
+        clearInterval(timer);
+        endGame()
       }
       // console.log(qIndex);
       // resetQuiz()
@@ -140,7 +142,7 @@ function startTimer() {
   }, 1000);
 }
 
-function endGame() {
+function endGame() {  
   quizSequence.style.display = "none";
   enterInitials.style.display = "flex";
 }
