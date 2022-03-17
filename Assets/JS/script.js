@@ -80,8 +80,6 @@ function checkAnswer() {
   answerText = currentQ.answer;
   choiceList.onclick = function(event) {
     choice = event.target.innerHTML;
-    console.log(choice);
-    console.log(answerText);
     if (choice === answerText) {
       isCorrect = true;
       score++;
@@ -162,7 +160,17 @@ function init() {
 }
 
 function showHighscores() {
+  var userInitials = document.getElementById('initials').value;
+  console.log(userInitials);
+  
+  
+  
+  
   // add logic for initials requirement, no initials pops up an alert, else submits form
+
+
+
+
     highscorePage.style.display = "flex";
     opener.style.display = "none";
     quizSequence.style.display = "none";
