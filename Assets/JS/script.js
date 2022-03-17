@@ -185,10 +185,8 @@ function renderScores() {
   allScores.reverse();
   for (var i = 0; i < allScores.length; i++) {
     var scoreArray = allScores[i];
-
     var li = document.createElement("li");
-    li.textContent = scoreArray[0] + "    " + scoreArray[1];
-
+    li.textContent = scoreArray[0] + " " + scoreArray[1];
     highscoreList.appendChild(li);
   }
 }
