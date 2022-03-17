@@ -21,7 +21,6 @@ var finalScore = document.querySelector("#finalScore");
 var highscoreList = document.querySelector("#highScoreList");
 
 var timer;
-var timerElement;
 var currentQ;
 var isCorrect;
 var score = 0;
@@ -46,6 +45,9 @@ var questions = [
     answer: "Cascading Style Sheet"
   },
 ]
+
+var timerElement = (questions.length)*8;
+timeLeft.textContent = timerElement;
 
 // Function to run when user clicks "start quiz" button
 function startGame() {
@@ -74,7 +76,6 @@ function addQuestion() {
     choiceButton.textContent = currentQ.choices[i];
     choiceList.appendChild(choiceButton);
     choiceButton.addEventListener("click", checkAnswer);
-
   }
 }
 
@@ -156,7 +157,7 @@ function init() {
   highscorePage.style.display = "none";
   quizSequence.style.display = "none";
   enterInitials.style.display = "none";
-  timeLeft.textContent = 75;
+  timeLeft.textContent = timerElement;
 }
 
 function showHighscores() {
