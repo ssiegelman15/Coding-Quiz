@@ -161,8 +161,10 @@ function init() {
 
 function showHighscores() {
   var userInitials = document.getElementById('initials').value;
-  console.log(userInitials);
-  
+  localStorage.setItem("Score", score);
+  localStorage.setItem("UserName", userInitials);
+  var scoreDisplay = localStorage.getItem("Score");
+  var initalDisplay = localStorage.getItem("UserName");
   
   
   
