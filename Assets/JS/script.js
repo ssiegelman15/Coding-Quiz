@@ -44,16 +44,21 @@ var questions = [
     choices: ["Common Style Sheet", "Cascading Style Sheet", "Colorful Style Sheet", "Computer Style Sheet"],
     answer: "Cascading Style Sheet"
   },
+  {
+    question: "What grade will I get on this homework?",
+    choices: ["C", "F", "A+", "B-"],
+    answer: "A+"
+  },
 ]
 
-var timerElement = (questions.length) * 8;
+var timerElement = (questions.length) * 6;
 timeLeft.textContent = timerElement;
 
 // Function to run when user clicks "start quiz" button
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
-  timerElement = (questions.length) * 8;
+  timerElement = (questions.length) * 6;
   timeLeft.textContent = timerElement;
   addQuestion()
   startTimer()
