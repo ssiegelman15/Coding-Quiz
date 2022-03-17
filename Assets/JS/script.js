@@ -160,12 +160,17 @@ function init() {
 }
 
 function showHighscores() {
-  var userInitials = document.getElementById('initials').value;
+  var userInitials = document.getElementById('initials').value.toUpperCase();
   localStorage.setItem("Score", score);
-  localStorage.setItem("UserName", userInitials);
+  localStorage.setItem("UserName", JSON.stringify(userInitials));
   var scoreDisplay = localStorage.getItem("Score");
   var initalDisplay = localStorage.getItem("UserName");
+  var finalInitials = JSON.parse(initalDisplay);
+  console.log(finalInitials)
   
+
+  
+
   
   
   // add logic for initials requirement, no initials pops up an alert, else submits form
