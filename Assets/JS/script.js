@@ -46,14 +46,14 @@ var questions = [
   },
 ]
 
-var timerElement = (questions.length)*8;
+var timerElement = (questions.length) * 8;
 timeLeft.textContent = timerElement;
 
 // Function to run when user clicks "start quiz" button
 function startGame() {
   opener.style.display = "none";
   quizSequence.style.display = "flex";
-  timerElement = (questions.length)*8;
+  timerElement = (questions.length) * 8;
   timeLeft.textContent = timerElement;
   addQuestion()
   startTimer()
@@ -161,29 +161,28 @@ function init() {
 }
 
 function showHighscores() {
-
-  highscorePage.style.display = "flex";
-  opener.style.display = "none";
-  quizSequence.style.display = "none";
-  enterInitials.style.display = "none";
-  headerBar.style.display = "none";
   var userInitials = document.getElementById('initials').value.toUpperCase();
-  var scoreInitials = [userInitials, score];
-  var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
-  allScores.push(scoreInitials);
-  localStorage.setItem("CodeQuiz", JSON.stringify(allScores));
-
-  renderScores()
-
-
-  // add logic for initials requirement, no initials pops up an alert, else submits form
-
-
+  if (userInitials.length <= 1) {
+    alert("Please enter your initials.");
+  } else {
+    var scoreInitials = [score, userInitials];
+    var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
+    allScores.push(scoreInitials);
+    localStorage.setItem("CodeQuiz", JSON.stringify(allScores));
+    renderScores()
+    highscorePage.style.display = "flex";
+    opener.style.display = "none";
+    quizSequence.style.display = "none";
+    enterInitials.style.display = "none";
+    headerBar.style.display = "none";
+  }
 }
 
 function renderScores() {
   var allScores = JSON.parse(localStorage.getItem("CodeQuiz")) || [];
   highscoreList.innerHTML = '';
+  allScores.sort();
+  allScores.reverse();
   for (var i = 0; i < allScores.length; i++) {
     var scoreArray = allScores[i];
 
