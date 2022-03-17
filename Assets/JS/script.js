@@ -18,6 +18,7 @@ var goBack = document.querySelector(".goBack");
 var clearHighscores = document.querySelector(".clearHighscores");
 var initials = document.querySelector("#initials");
 var finalScore = document.querySelector("#finalScore");
+var highscoreList = document.querySelector("#highScoreList");
 
 var timer;
 var timerElement;
@@ -149,6 +150,7 @@ function endGame() {
 }
 
 function init() {
+  allScores = [];
   score = 0;
   qIndex = 0;
   resetQuiz()
@@ -161,46 +163,39 @@ function init() {
 }
 
 function showHighscores() {
+  
+  highscorePage.style.display = "flex";
+  opener.style.display = "none";
+  quizSequence.style.display = "none";
+  enterInitials.style.display = "none";
+  headerBar.style.display = "none";
   var userInitials = document.getElementById('initials').value.toUpperCase();
   localStorage.setItem("Score", score);
   localStorage.setItem("UserName", JSON.stringify(userInitials));
   var scoreDisplay = localStorage.getItem("Score");
   var initalDisplay = localStorage.getItem("UserName");
   var finalInitials = JSON.parse(initalDisplay);
-  console.log(finalInitials)
   var scoreInitials = [finalInitials, scoreDisplay];
   allScores.push(scoreInitials);
+  console.log(allScores);
   
-  // renderScores()
+  renderScores()
 
   
   // add logic for initials requirement, no initials pops up an alert, else submits form
 
-    highscorePage.style.display = "flex";
-    opener.style.display = "none";
-    quizSequence.style.display = "none";
-    enterInitials.style.display = "none";
-    headerBar.style.display = "none";
+  
 }
 
 function renderScores() {
-  // Clear todoList element and update todoCountSpan
-  todoList.innerHTML = "";
-  todoCountSpan.textContent = todos.length;
-
   // Render a new li for each todo
-  for (var i = 0; i < todos.length; i++) {
-    var todo = todos[i];
+  for (var i = 0; i < allScores.length; i++) {
+    var scoreArray = allScores[i];
 
     var li = document.createElement("li");
-    li.textContent = todo;
-    li.setAttribute("data-index", i);
+    li.textContent = scoreArray[0] + "    " + scoreArray[1];
 
-    var button = document.createElement("button");
-    button.textContent = "Complete ✔️";
-
-    li.appendChild(button);
-    todoList.appendChild(li);
+    highscoreList.appendChild(li);
   }
 }
 
@@ -210,6 +205,7 @@ function showHighscores2() {
   quizSequence.style.display = "none";
   enterInitials.style.display = "none";
   headerBar.style.display = "none";
+  renderScores()
 }
 
 startButton.addEventListener("click", startGame);
